@@ -1,5 +1,11 @@
+
 <template>
- <AppHeader class="app-header" ></AppHeader>
+
+<div class="text-center text-2xl text-red-500">Hello
+  <AppHeader class="text-center"></AppHeader>
+</div>
+
+ 
 </template>
 
 <script>
@@ -12,11 +18,3 @@ export default {
   }
 }
 </script>
-
-<style src="./assets/tailwind.css"></style>
-
-<style>
-.app-header{
-  @apply text-center
-}
-</style>

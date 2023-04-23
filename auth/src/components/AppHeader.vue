@@ -1,5 +1,5 @@
 <template>
-    <h1>Hoere.</h1>
+    <h1 class="app-header">Hoere.</h1>
 </template>
 
 <script>
