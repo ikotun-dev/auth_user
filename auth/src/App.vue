@@ -1,20 +1,22 @@
 
 <template>
-
-<div class="text-center text-2xl text-red-500">Hello
-  <AppHeader class="text-center"></AppHeader>
-</div>
-
+ 
+  <div class="font-sans">
+  <AppHeader></AppHeader>
+  <LoginForm></LoginForm>
+  </div>
  
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
+import LoginForm from './components/LoginForm.vue';
 
 export default {
   name: 'App',
   components: {
-    AppHeader
+    AppHeader,
+    LoginForm,
   }
 }
 </script>
