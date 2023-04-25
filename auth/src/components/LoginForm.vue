@@ -1,7 +1,7 @@
 <template>
     <div class="bg-indigo-300 flex justify-center  h-screen  ">
 
-        <div class="bg-white mt-40 mb-20 w-80 h-auto p-6 shadow-lg rounded-md sm:mt-10 sm:w-96 md:w-96">
+        <div class="bg-white mt-40 mb-20 w-80 h-[450px] p-6 shadow-lg rounded-md sm:mt-10 sm:w-96 md:w-96">
       
             <form @submit.prevent="handleSubmit" >
             <h1 class="text-3xl block  text-blue-950 text-center font-semibold"><i class="fa-solid fa-user mr-3"/>Login</h1>
@@ -41,7 +41,7 @@ export default{
         return{
             username : " ",
             password : " ",
-            loginStatus : false,
+            loginStatus : null,
             
         }
 
@@ -69,6 +69,7 @@ export default{
             }
             else{
                 console.log("Didnt fecth from the API")
+                this.loginStatus = false
             }
         })
         .catch(error => {
