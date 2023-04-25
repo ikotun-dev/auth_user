@@ -4,8 +4,11 @@
   <div class="font-sans">
   <AppHeader></AppHeader>
   <LoginForm></LoginForm>
+
+  <router-view></router-view>
   </div>
  
+
 </template>
 
 <script>

@@ -1,9 +1,14 @@
 <template>
     <div class="bg-indigo-300 flex justify-center  h-screen  ">
 
-        <div class="bg-white mt-40 mb-20 h-96 w-80 p-6 shadow-lg rounded-md sm:mt-10 sm:h-96 sm:w-96 md:w-96">
+        <div class="bg-white mt-40 mb-20 w-80 h-auto p-6 shadow-lg rounded-md sm:mt-10 sm:w-96 md:w-96">
+      
             <form @submit.prevent="handleSubmit" >
             <h1 class="text-3xl block  text-blue-950 text-center font-semibold"><i class="fa-solid fa-user mr-3"/>Login</h1>
+
+            <div v-if="loginStatus === false" class="mt-3 bg-red-100 rounded-lg p-1 border-red-400 border-2 ">
+                <h1 class="flex justify-center font-normal ">Invalid details</h1>
+            </div>
             <hr class="mt-3">
             <div class="mt-3">
                 <label class="block text-base mb-2" for="username">Username </label>
@@ -36,6 +41,7 @@ export default{
         return{
             username : " ",
             password : " ",
+            loginStatus : false,
             
         }
 
@@ -59,6 +65,7 @@ export default{
         .then(response => {
             if(response.ok){
                 console.log("It worked")
+                this.$router.push('/dashboard')
             }
             else{
                 console.log("Didnt fecth from the API")
