@@ -23,28 +23,41 @@
 
     </div>
   </div>
-
-  <NewForm></NewForm>
-  
-
+  <div class="bg-blue-400 h-11 mx-2 my-2 flex p-1 justify-center rounded-lg">
+    <button class="text-white font-extrabold" @click="toogleTask" >Add a Task</button>
+  </div>
+  <div v-if="toogle == true">
+    <NewForm></NewForm>
+  </div>
+<taskSect></taskSect>
 </div>
 
 </template>
 <script>
 import AppHeader from './AppHeader.vue'
 import NewForm from './NewForm.vue'
+import taskSect from './taskSect.vue'
 
 export default{
+
     components : {
         AppHeader,
-        NewForm
+        NewForm,
+        taskSect
     },
     data(){
         return{
+            toogle : false
 
         }
     },
     methods : {
+
+        //function to toogle the task 
+
+        toogleTask(){
+            this.toogle = !this.toogle
+        }
 
     }
 }

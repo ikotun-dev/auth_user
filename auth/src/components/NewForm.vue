@@ -29,25 +29,7 @@
 </form>
 </div>
 
-<div class="mt-3">
-    <!-- Tasks -->
-    <div class="bg-gray-200 h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2 border-l-gray-700">
-        <h2> Go to class </h2>
-        <h4>date : 9/09/21</h4>
-    </div>
 
-    <div class="bg-gray-200 h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2 border-l-gray-700">
-        <h2> Go to church </h2>
-        <h4>date : 9/09/21</h4>
-    </div>
-
-    <div class="bg-gray-200 h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2 border-l-gray-700">
-        <h2> Go to NH </h2>
-        <h4>date : 9/09/21</h4>
-    </div>
-
-
-</div>
 </template>
 <script>
 export default{
@@ -57,13 +39,17 @@ export default{
             description : '',
             date : '',
             detail : '',
-            reminder : false
+            reminder : false,
+            
         }
     },
+
+    
+
     methods : {
+
+        //function that handles the adding of a new task
         async addTask(){
-
-
                 const res = await fetch('http://127.0.0.1:5000/add-task/', {method : 'POST',
                  headers : {
                     'Content-type'  : 'application/json'
@@ -80,9 +66,9 @@ export default{
 
                 const data = await res.json()
                 console.log(data)
+        },//addTask
 
-
-        }//addTask
+        
     }
 }
 </script>
