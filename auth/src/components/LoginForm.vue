@@ -1,4 +1,6 @@
 <template>
+
+    <AppHeader></AppHeader>
     <div class="bg-indigo-300 flex justify-center  h-screen  ">
 
         <div class="bg-white mt-40 mb-20 w-80 h-[450px] p-6 shadow-lg rounded-md sm:mt-10 sm:w-96 md:w-96">
@@ -35,8 +37,13 @@
 </template>
 <script>
 
+import AppHeader from './AppHeader.vue';
+
 export default{
     name: 'LoginForm',
+    components : {
+        AppHeader,
+    },
     data() {
         return{
             username : " ",
@@ -46,6 +53,7 @@ export default{
         }
 
     },
+
 
     methods: {
     async handleSubmit(){
@@ -61,15 +69,44 @@ export default{
                 })
                 }
 
+
        await fetch("http://127.0.0.1:8000/login/", requestOptions)
         .then(response => {
             if(response.ok){
+
+               // var access = null
+               // var refresh = null
+
+                response.json().then(data =>{
+
+                    //extract the access and refresh tokens 
+                    const access = data.access
+                    const refresh = data.refresh
+
+                    //setting the access amd refresh token on the local storage
+                    localStorage.setItem('accessToken', access)
+                    localStorage.setItem('refreshToken', refresh)
+
+                    console.log(access)
+                    console.log(refresh)
+
+
+                }
+
+
+           )
                 console.log("It worked")
+               
+
                 this.$router.push('/dashboard')
+                this.loginStatus = true
+                localStorage.setItem('isLoggedIn', 'true')
+                
             }
             else{
                 console.log("Didnt fecth from the API")
                 this.loginStatus = false
+                this.$router.push('/')
             }
         })
         .catch(error => {

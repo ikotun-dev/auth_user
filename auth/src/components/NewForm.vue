@@ -6,7 +6,7 @@
 <div class="m-4 border-1 border-blue-950 flex justify-center">
 
 <hr/>
-<form class="m-2">
+<form @submit.prevent="addTask" class="m-2">
 <label class="text-lg text-blue-950 font-semibold mb-2" for="taskname">Task description </label>
 <input type="text" v-model="description" class="w-full font-serif rounded-md focus:outline-none focus:border-1 focus:border-blue-900 my-2"/>
 
@@ -23,7 +23,7 @@
 </div>
 
 <div class="bg-blue-950 h-11 flex justify-center rounded-md mt-5 :hover-blue-100">
-    <button class="text-white font-extrabold ">Add Task</button>
+    <button type="submit" class="text-white font-extrabold ">Add Task</button>
 </div>
 
 </form>
@@ -57,8 +57,32 @@ export default{
             description : '',
             date : '',
             detail : '',
-
+            reminder : false
         }
+    },
+    methods : {
+        async addTask(){
+
+
+                const res = await fetch('http://127.0.0.1:5000/add-task/', {method : 'POST',
+                 headers : {
+                    'Content-type'  : 'application/json'
+                 },
+                
+                  body : JSON.stringify({ 
+                        description : this.description,
+                        date : this.date,
+                        detail : this.detail ,
+                        reminder : this.reminder 
+                })}
+
+                );//request options
+
+                const data = await res.json()
+                console.log(data)
+
+
+        }//addTask
     }
 }
 </script>
