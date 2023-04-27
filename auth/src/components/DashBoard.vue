@@ -23,7 +23,7 @@
 
     </div>
   </div>
-  <div class="bg-blue-400 h-11 mx-2 my-2 flex p-1 justify-center rounded-lg">
+  <div class="bg-blue-950 h-11 mx-3 my-2 flex p-1 justify-center rounded-md">
     <button class="text-white font-extrabold" @click="toogleTask" >Add a Task</button>
   </div>
   <div v-if="toogle == true">
