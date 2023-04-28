@@ -67,28 +67,36 @@ export default{
                 const data = await res.json()
                 console.log(data)
         },//addTask
-    //function nto send the emition 
+
+    //function to clear the details in the form 
+  //  clearForm()
+    //function to send the emition
     emitData(){
-        
         const newData = {
                     'description' : this.description,
                     'date' : this.date,
                     'detail': this.detail,
-                }
+                }//new data
 
-                    // Emit the event 
+         // Emit the event 
         this.$emit('taskAdded', newData);
-        console.log("Emmitted")
-        console.log(newData)
 
-                }
+        //get logs 
+        console.log("Emmitted")
+        // console.log(newData)
+
+        this.description = ''
+        this.detail = ''
+        this.date= ''
+
+        //emitData
+
 
 
     }
-
-
 
         
     }
 
+}
 </script>

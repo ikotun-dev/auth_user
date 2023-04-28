@@ -27,10 +27,10 @@
     <h1 class="text-white font-extrabold" >Add a Task</h1>
   </div>
   <div v-if="toogle == true">
-    <NewForm></NewForm>
+    <NewForm @taskAdded="handleData"></NewForm>
     <PopNotify></PopNotify>
   </div>
-<taskSect></taskSect>
+<taskSect v-on:taskAdded="handle"></taskSect>
 </div>
 
 </template>
@@ -67,18 +67,22 @@ export default{
         
          toogleTask(){
             this.toogle = !this.toogle
-        }
+        },//addtask
+
+    //function to work with the emitted data passed from newForm
+      handleData(newTask){
+
+        console.log("Medium test....")
+
+        console.log(newTask)
+
+        this.data.push(newTask)
+        this.$emit('taskAdded', newTask)
+
+      }
 
     },
-  // define the "taskAdded" event that the child component can emit
-   mounted() {
-     // listen to the new-data-added event emitted by NewForm.vue component
-     this.$mitt.on('new-data-added', (newData) => {
-      // update the data with the new data
-      this.data.push(newData);
-     })//mounted
-   },
-        //function to toogle the task 
+  
 
 }
 </script>
