@@ -23,8 +23,8 @@
 
     </div>
   </div>
-  <div class="bg-blue-950 h-11 mx-3 my-2 flex p-1 justify-center rounded-md" @click="toogleTask">
-    <button class="text-white font-extrabold" @click="toogleTask" >Add a Task</button>
+  <div class="bg-blue-950 h-11 mx-3 my-2 flex pt-2 justify-center rounded-md" @click="toogleTask">
+    <h1 class="text-white font-extrabold" >Add a Task</h1>
   </div>
   <div v-if="toogle == true">
     <NewForm></NewForm>
@@ -51,18 +51,34 @@ export default{
     },
     data(){
         return{
-            toogle : false
+            toogle : false,
+            data : []
 
         }
     },
     methods : {
 
-        //function to toogle the task 
+    
+    // addTask method that gets called when the "taskAdded" event is emitted
+       addTask(newTask) {
+            this.tasks.push(newTask)
+         },
 
-        toogleTask(){
+        
+         toogleTask(){
             this.toogle = !this.toogle
         }
 
-    }
+    },
+  // define the "taskAdded" event that the child component can emit
+   mounted() {
+     // listen to the new-data-added event emitted by NewForm.vue component
+     this.$mitt.on('new-data-added', (newData) => {
+      // update the data with the new data
+      this.data.push(newData);
+     })//mounted
+   },
+        //function to toogle the task 
+
 }
 </script>

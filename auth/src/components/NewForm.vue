@@ -23,7 +23,7 @@
 </div>
 
 <div class="bg-blue-950 h-11 flex justify-center rounded-md mt-5 :hover-blue-100">
-    <button type="submit" class="text-white font-extrabold ">Add Task</button>
+    <button type="submit" @click="emitData" class="text-white font-extrabold ">Add Task</button>
 </div>
 
 </form>
@@ -64,32 +64,31 @@ export default{
                 })}
 
                 );//request options
+                const data = await res.json()
+                console.log(data)
+        },//addTask
+    //function nto send the emition 
+    emitData(){
+        
+        const newData = {
+                    'description' : this.description,
+                    'date' : this.date,
+                    'detail': this.detail,
+                }
 
-                if (res.status == 200){
-                    // Emit the event
-                    this.$root.$emit('taskAdded');
+                    // Emit the event 
+        this.$emit('taskAdded', newData);
+        console.log("Emmitted")
+        console.log(newData)
 
                 }
 
-                const data = await res.json()
 
-                // const newTask = {
-                //     id: data.id,
-                //     description: this.description,
-                //     date: this.date,
-                //     detail: this.detail,
-                //     reminder: this.reminder
-                // }
-
-              
+    }
 
 
-                console.log(data)
-
-
-        },//addTask
 
         
     }
-}
+
 </script>

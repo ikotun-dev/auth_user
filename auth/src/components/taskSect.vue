@@ -16,6 +16,7 @@
 </template>
 <script>
 
+import mitt from 'mitt'
 
 export default{
   name : 'taskSect',
@@ -26,7 +27,13 @@ export default{
   },
 
   created() {
+    const emitter = mitt()
+    this.$mitt = emitter
+
         this.getOldTask();
+        this.$mitt.on("taskAdded", (newData) => {
+      this.previousTasks.push(newData);
+    });
     
     },
   

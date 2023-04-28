@@ -1,4 +1,3 @@
-
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/tailwind.css'
@@ -17,4 +16,9 @@ const router = createRouter({
     routes
 })
 
-createApp(App).use(router).mount('#app')
+import mitt from 'mitt';
+
+const app = createApp(App);
+app.config.globalProperties.$mitt = mitt();
+
+app.use(router).mount('#app')
