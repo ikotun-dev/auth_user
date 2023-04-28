@@ -8,7 +8,7 @@
       </div>
 
       <div>
-        <i class="fas fa-cross"></i>
+        <i class="fas fa-xmark text-red-950 " @click="deleteTask(task.id)"></i>
       </div>
     </div>  
 
@@ -37,7 +37,24 @@ export default{
             this.previousTasks = data;
             console.log(data)
 
-        }
+        },//getOldtask
+    
+    async deleteTask(id){
+      const res = await fetch(`http://127.0.0.1:5000/delete-task/${id}`, {
+        method: 'DELETE'
+      })
+      if (res == 200){
+        // Remove the task from the list
+        this.previousTasks = this.previousTasks.filter(task => task.id !== id);
+
+      }
+      else{
+        console.log(id)
+        console.log("Error deleting task")
+      }
+
+    }
+    
   }
 
 }

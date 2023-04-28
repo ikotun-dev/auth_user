@@ -23,11 +23,12 @@
 
     </div>
   </div>
-  <div class="bg-blue-950 h-11 mx-3 my-2 flex p-1 justify-center rounded-md">
+  <div class="bg-blue-950 h-11 mx-3 my-2 flex p-1 justify-center rounded-md" @click="toogleTask">
     <button class="text-white font-extrabold" @click="toogleTask" >Add a Task</button>
   </div>
   <div v-if="toogle == true">
     <NewForm></NewForm>
+    <PopNotify></PopNotify>
   </div>
 <taskSect></taskSect>
 </div>
@@ -37,13 +38,16 @@
 import AppHeader from './AppHeader.vue'
 import NewForm from './NewForm.vue'
 import taskSect from './taskSect.vue'
+import PopNotify from './PopNotify.vue'
 
 export default{
 
     components : {
         AppHeader,
         NewForm,
-        taskSect
+        taskSect,
+        PopNotify,
+
     },
     data(){
         return{

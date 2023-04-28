@@ -36,6 +36,7 @@ export default{
     name: 'NewForm',
     data(){
         return{
+            id : '',
             description : '',
             date : '',
             detail : '',
