@@ -32,6 +32,8 @@
 
 </template>
 <script>
+
+
 export default{
     name: 'NewForm',
     data(){
@@ -63,7 +65,25 @@ export default{
 
                 );//request options
 
+                if (res.status == 200){
+                    // Emit the event
+                    this.$root.$emit('taskAdded');
+
+                }
+
                 const data = await res.json()
+
+                // const newTask = {
+                //     id: data.id,
+                //     description: this.description,
+                //     date: this.date,
+                //     detail: this.detail,
+                //     reminder: this.reminder
+                // }
+
+              
+
+
                 console.log(data)
 
 

@@ -6,7 +6,6 @@
       <h2>{{ task.description }}</h2>
         <h4>Date: {{ task.date }}</h4>
       </div>
-
       <div>
         <i class="fas fa-xmark text-red-950 " @click="deleteTask(task.id)"></i>
       </div>
@@ -16,6 +15,8 @@
 
 </template>
 <script>
+
+
 export default{
   name : 'taskSect',
   data(){
@@ -26,6 +27,7 @@ export default{
 
   created() {
         this.getOldTask();
+    
     },
   
   methods : {
@@ -35,6 +37,7 @@ export default{
             const res = await fetch('http://127.0.0.1:5000/get-tasks/');
             const data = await res.json();
             this.previousTasks = data;
+            console.log(this.previousTasks.id)
             console.log(data)
 
         },//getOldtask
@@ -43,7 +46,7 @@ export default{
       const res = await fetch(`http://127.0.0.1:5000/delete-task/${id}`, {
         method: 'DELETE'
       })
-      if (res == 200){
+      if (res.status === 200){
         // Remove the task from the list
         this.previousTasks = this.previousTasks.filter(task => task.id !== id);
 
