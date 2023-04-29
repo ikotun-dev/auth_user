@@ -84,7 +84,18 @@ export default{
                     //extract the access and refresh tokens 
                     const access = data.access
                     const refresh = data.refresh
+                    //const user_id = data.user_id
+                    //const last_task = data.user_last
+
+
+                    //storing particular data in the vuejs vuux state manage storage 
                     this.$store.commit('setUser', data.user);
+                    //storing the user id 
+                    this.$store.commit('setUserId', data.user_id)
+
+                    //storing the last task
+                    this.$store.commit('setLastTask', data.user_last_task)
+
                     console.log(data.user)
 
                     //setting the access amd refresh token on the local storage

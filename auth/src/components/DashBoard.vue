@@ -19,7 +19,7 @@
     </div>
     <div class="bg-cyan-900 ml-2 mr-2 h-24 w-64 p-4 rounded-md">
         <h2 class="text-gray-300 font-bold">Latest Task</h2>
-        <h1 class="text-white font-extrabold text-lg mt-2 mr-4 text-right">Go the clinic - 7pm</h1>
+        <h1 class="text-white font-extrabold text-lg mt-2 mr-4 text-right">{{ last_task }}</h1>
 
     </div>
   </div>
@@ -60,6 +60,9 @@ export default{
      user() {
       return this.$store.state.user;
     },
+    last_task(){
+        return this.$store.state.lastTask;
+    }
    },
     methods : {
 
