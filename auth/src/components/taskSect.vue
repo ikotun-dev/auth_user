@@ -1,4 +1,5 @@
-<template>
+
+ <template>
   <div id="showsprevioustasks" class="mt-3">
     <div v-for="task in previousTasks" :key="task.id" class="flex justify-between bg-gray-200 h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2 border-l-gray-700">
       <div>
@@ -13,7 +14,6 @@
 </template>
 
 <script>
-
 import _ from 'lodash';
 
 export default {
@@ -23,44 +23,36 @@ export default {
       previousTasks: [],
     };
   },
-  async created() {
-    
-    const user_id = this.$store.state.userId;
-    console.log('cauaght it : ', user_id)
-
-    await this.getOldTask(user_id);
-
+  created() {
+    this.getOldTask();
   },
-
-  //conputed properties 
-  computed:{
-  // user_id(){
-  //   return this.$store.state.userId;
-    
- // }
+  computed: {
+    userId() {
+      return this.$store.state.userId;
+    },
   },
-
   methods: {
-    async getOldTask(user_id) {
-
-      console.log('it was passed oooo : ', user_id)
-
-      const res = await fetch(`http://127.0.0.1:8000/get-tasks/${user_id}/`);
+    async getOldTask() {
+      if (!this.userId) {
+        // Wait for the userId to be available in the store
+        setTimeout(() => {
+          this.getOldTask();
+        }, 1000);
+        return;
+      }
+      const res = await fetch(`http://127.0.0.1:8000/get-tasks/${this.userId}/`);
       const data = await res.json();
       if (_.isEqual(data, this.previousTasks)) {
-        console.log(this.previousTasks)
         // No new data available, wait for 1 second and check again
         setTimeout(() => {
-          this.getOldTask(user_id);
+          this.getOldTask();
         }, 1000);
       } else {
         // New data available, update the task list
         this.previousTasks = data;
-        console.log(this.previousTasks.id);
-        console.log(data);
         // Wait for 1 second and check again
         setTimeout(() => {
-          this.getOldTask(user_id);
+          this.getOldTask();
         }, 1000);
       }
     },
@@ -78,13 +70,6 @@ export default {
         console.log('Error deleting task');
       }
     },
-    handle(newTask) {
-      console.log(newTask);
-
-    },
   },
 };
-
 </script>
-  
-
