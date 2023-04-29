@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     async getOldTask() {
-      const res = await fetch('http://127.0.0.1:5000/get-tasks/');
+      const res = await fetch('http://127.0.0.1:8000/get-tasks/');
       const data = await res.json();
       if (_.isEqual(data, this.previousTasks)) {
         // No new data available, wait for 1 second and check again
@@ -102,7 +102,7 @@ export default {
       }
     },
     async deleteTask(id) {
-      const res = await fetch(`http://127.0.0.1:5000/delete-task/${id}`, {
+      const res = await fetch(`http://127.0.0.1:8000/delete-task/${id}`, {
         method: 'DELETE',
       });
       if (res.status === 200) {
@@ -117,6 +117,7 @@ export default {
     },
     handle(newTask) {
       console.log(newTask);
+
     },
   },
 };
