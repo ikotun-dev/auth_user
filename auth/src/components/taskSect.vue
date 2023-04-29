@@ -23,12 +23,12 @@ export default {
       previousTasks: [],
     };
   },
-  created() {
+  async created() {
     
     const user_id = this.$store.state.userId;
     console.log('cauaght it : ', user_id)
 
-    this.getOldTask(user_id);
+    await this.getOldTask(user_id);
 
   },
 
@@ -51,7 +51,7 @@ export default {
         console.log(this.previousTasks)
         // No new data available, wait for 1 second and check again
         setTimeout(() => {
-          this.getOldTask();
+          this.getOldTask(user_id);
         }, 1000);
       } else {
         // New data available, update the task list
@@ -60,7 +60,7 @@ export default {
         console.log(data);
         // Wait for 1 second and check again
         setTimeout(() => {
-          this.getOldTask();
+          this.getOldTask(user_id);
         }, 1000);
       }
     },
