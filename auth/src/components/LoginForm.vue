@@ -92,6 +92,8 @@ export default{
                     this.$store.commit('setUser', data.user);
                     //storing the user id 
                     this.$store.commit('setUserId', data.user_id)
+                    console.log(data.user_id)
+                    console.log('this.$store.state.userId:', this.$store.state.userId);
 
                     //storing the last task
                     this.$store.commit('setLastTask', data.user_last_task)
