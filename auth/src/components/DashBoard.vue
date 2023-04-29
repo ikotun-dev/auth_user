@@ -8,7 +8,7 @@
        <div class="bg-blue-900 h-16 sm:h-30 max-w-screen-md mx-2 sm:mx-auto flex items-center  rounded-md sm:mt-2 m-2  p-4">
         <i class="fas fa-user font-extrabold text-white mr-2"></i>
       <!-- <div class="bg-white h-12 sm:h-10 border-2 border-black w-12 sm:w-10  rounded-full"></div> -->
-  <h2 class="text-white text-sm sm:text-lg font-extrabold">Collins</h2>
+  <h2 class="text-white text-sm sm:text-lg font-extrabold" @click="user">{{user}}</h2>
   </div> 
 
   <div class="flex justify-between">
@@ -56,6 +56,11 @@ export default{
 
         }
     },
+    computed: {
+     user() {
+      return this.$store.state.user;
+    },
+   },
     methods : {
 
     

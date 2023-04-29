@@ -1,19 +1,16 @@
-//vue X config
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 
-Vue.use(Vuex);
-
-export const store = new Vuex.Store({
+const store = createStore({
   state: {
-    user: null
+    user: '',
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
-    }
+    },
   },
-  getters: {
-    user: state => state.user
-  }
+  actions: {},
+  modules: {},
 });
+
+export default store;

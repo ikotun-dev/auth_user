@@ -84,6 +84,8 @@ export default{
                     //extract the access and refresh tokens 
                     const access = data.access
                     const refresh = data.refresh
+                    this.$store.commit('setUser', data.user);
+                    console.log(data.user)
 
                     //setting the access amd refresh token on the local storage
                     localStorage.setItem('accessToken', access)
@@ -99,6 +101,7 @@ export default{
            )
                 console.log("It worked")
                
+                
 
                 this.$router.push('/dashboard')
                 this.loginStatus = true
