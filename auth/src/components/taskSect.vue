@@ -38,7 +38,7 @@ export default {
         // Wait for the userId to be available in the store
         setTimeout(() => {
           this.getOldTask();
-        }, 100000);
+        }, 1000);
         return;
       }
       const res = await fetch(`http://127.0.0.1:8000/get-tasks/${this.userId}/`);
@@ -47,16 +47,19 @@ export default {
         // No new data available, wait for 1 second and check again
         setTimeout(() => {
           this.getOldTask();
-        }, 100000);
+        }, 1000);
       } else {
         // New data available, update the task list
         this.previousTasks = data;
         // Wait for 1 second and check again
         setTimeout(() => {
           this.getOldTask();
-        }, 100000);
+        }, 1000);
       }
     },
+
+
+    
     async deleteTask(id) {
       const res = await fetch(`http://127.0.0.1:8000/delete-task/${id}`, {
         method: 'DELETE',
