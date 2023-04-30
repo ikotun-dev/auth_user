@@ -28,7 +28,7 @@
   </div>
   <div v-if="toogle == true">
     <NewForm @taskAdded="handleData"></NewForm>
-    <PopNotify></PopNotify>
+    <PopNotify v-if="added == true" ></PopNotify>
   </div>
 <taskSect v-on:taskAdded="handle"></taskSect>
 </div>
@@ -52,7 +52,8 @@ export default{
     data(){
         return{
             toogle : false,
-            data : []
+            data : [],
+            popnotify : false,
 
         }
     },

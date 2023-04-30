@@ -18,7 +18,7 @@
 <input type="text" v-model="detail" name="detail" class="w-full font-serif rounded-md focus:outline-none focus:border-1 focus:border-blue-900 my-2"/>
 
 <div class="flex ">
-<label class="text-lg text-blue-950 font-semibold" for="reminder">Reminder </label>
+<label class="text-lg text-blue-950 font-semibold" for="reminder" >Reminder </label>
 <input type="checkbox" class="mt-2 ml-3" v-model="reminder" name="reminder" />
 </div>
 
@@ -34,6 +34,7 @@
 <script>
 
 
+
 export default{
     name: 'NewForm',
     data(){
@@ -43,6 +44,7 @@ export default{
             date : '',
             detail : '',
             reminder : false,
+           
             
         }
     },
@@ -70,6 +72,8 @@ export default{
     //function to clear the details in the form 
   //  clearForm()
     //function to send the emition
+
+
     emitData(){
         const newData = {
                     'description' : this.description,
