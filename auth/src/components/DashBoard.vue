@@ -12,13 +12,13 @@
 
   <div class="flex justify-between">
     <div class="bg-cyan-700 ml-2 h-24 w-32 p-4 rounded-md">
-        <h2 class="text-gray-300 font-bold">Task Count </h2>
-        <h1 class="text-white font-extrabold text-3xl mt-2 mr-4 text-right">0</h1>
+        <h2 class="text-gray-300 font-bold">TaskCount </h2>
+        <h1 class="text-white font-extrabold text-2xl mt-2 mr-4 text-right">0</h1>
 
     </div>
     <div class="bg-cyan-800 ml-2 mr-2 h-24 w-64 p-4 rounded-md">
-        <h2 class="text-gray-300 font-bold">Latest Task</h2>
-        <h1 class="text-white font-extrabold text-lg mt-2 mr-4 text-right">{{ last_task }}</h1>
+       <div class="flex justify-between"><h2 class="text-gray-300 font-bold">LatestTask</h2><i class="fas fa-feed text-white text-2xl"></i></div>
+    <h1 class="text-white font-extrabold text-md mt-2 mr-4 text-right">{{ last_task }}</h1>
 
     </div>
   </div>
@@ -58,9 +58,9 @@ export default{
             toogle : false,
             data : [],
             popnotify : false,
-            data_input : false,
+            data_input : true,
             collaborate : false,
-            settings : false
+            settings : false,
 
         }
     },
@@ -76,6 +76,8 @@ export default{
         //toogle data input
         toogleDataInput(){
             this.data_input = true;
+            this.collaborate = false;
+            this.settings = false;
         },//toogle data input
 
         //tooglecollaborate 
@@ -90,7 +92,7 @@ export default{
             this.data_input = false;
             this.settings = true;
             this.collaborate = false;
-        }
+        },
 
 
     
