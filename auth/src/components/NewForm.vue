@@ -9,9 +9,13 @@
 <form @submit.prevent="addTask" class="m-2">
 <label class="text-lg text-blue-950 font-semibold mb-2" for="taskname">Task description </label>
 <input type="text" v-model="description" class="w-full font-serif rounded-md focus:outline-none focus:border-1 focus:border-blue-900 my-2"/>
+<!-- 
+<label class="text-lg text-blue-950 font-semibold" for="date">Date </label>
+<input type="text" v-model="date" class="w-full rounded-md font-serif focus:outline-none focus:border-1 focus:border-blue-900 my-2"/> -->
 
 <label class="text-lg text-blue-950 font-semibold" for="date">Date </label>
-<input type="text" v-model="date" class="w-full rounded-md font-serif focus:outline-none focus:border-1 focus:border-blue-900 my-2"/>
+<input type="date" v-model="date" class="w-full rounded-md font-serif focus:outline-none focus:border-1 focus:border-blue-900 my-2 appearance-none border border-gray-300 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+
 
 
 <label class="text-lg text-blue-950 font-semibold" for="detail">Details  </label>
@@ -52,12 +56,14 @@ export default{
     methods : {
         //function that handles the adding of a new task
         async addTask(){
-                const res = await fetch('http://127.0.0.1:8000/add-task/', {method : 'POST',
+                const res = await fetch(`http://127.0.0.1:8000/add-task/${this.$store.state.userId}/`, {method : 'POST',
                  headers : {
                     'Content-type'  : 'application/json'
                  },
                 
                   body : JSON.stringify({ 
+                        id : this.$store.state.userId,
+                        owner_id : this.$store.userId,
                         description : this.description,
                         date : this.date,
                         detail : this.detail ,
@@ -72,8 +78,6 @@ export default{
     //function to clear the details in the form 
   //  clearForm()
     //function to send the emition
-
-
     emitData(){
         const newData = {
                     'description' : this.description,

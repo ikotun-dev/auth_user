@@ -30,7 +30,7 @@
     <NewForm @taskAdded="handleData"></NewForm>
     <PopNotify v-if="added == true" ></PopNotify>
   </div>
-<taskSect v-on:taskAdded="handle"></taskSect>
+<taskSect></taskSect>
 </div>
 
 </template>

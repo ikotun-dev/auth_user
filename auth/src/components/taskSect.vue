@@ -1,7 +1,7 @@
 
  <template>
   <div id="showsprevioustasks" class="mt-3">
-    <div v-for="task in previousTasks" :key="task.id" class="flex justify-between bg-gray-200 h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2 border-l-gray-700">
+    <div  v-for="task in previousTasks" :key="task.id" class="flex justify-between h-16 mx-5 border-l-4 pl-5 pr-5 pb-5 pt-2 mb-2" :class="{ 'border-l-gray-700': !task.clicked, 'border-l-green-700': task.clicked }" @dblclick="task.clicked = !task.clicked">  
       <div>
         <h2>{{ task.description }}</h2>
         <h4>Date: {{ task.date }}</h4>
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       previousTasks: [],
+      reminder  : false,
     };
   },
   created() {
