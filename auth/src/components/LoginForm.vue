@@ -1,6 +1,6 @@
 <template>
 
-    <AppHeader></AppHeader>
+    <!-- <AppHeader></AppHeader> -->
     <div class="bg-indigo-300 flex justify-center  h-screen  ">
 
       <div class="bg-white mt-40 mb-20 w-80 h-[450px] p-6 shadow-lg rounded-md sm:mt-10 sm:w-96 md:w-96">
@@ -39,12 +39,12 @@
 </template>
 <script>
 
-import AppHeader from './AppHeader.vue';
+//import AppHeader from './AppHeader.vue';
 
 export default{
     name: 'LoginForm',
     components : {
-        AppHeader,
+      //  AppHeader,
     },
     data() {
         return{
