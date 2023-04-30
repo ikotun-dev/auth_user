@@ -1,6 +1,10 @@
 # auth
+# auth
+
+![Task Buddy Image](./task_buddy.jpg)
 
 ## Project setup
+
 ```
 npm install
 ```

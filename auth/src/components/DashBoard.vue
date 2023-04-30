@@ -17,7 +17,7 @@
 
     </div>
     <div class="bg-cyan-800 ml-2 mr-2 h-24 w-64 p-4 rounded-md">
-       <div class="flex justify-between"><h2 class="text-gray-300 font-bold">LatestTask</h2><i class="fas fa-feed text-white text-2xl"></i></div>
+       <div class="flex justify-evenly"><h2 class="text-gray-300 font-bold">LatestTask</h2><i class="fas fa-thumb-tack text-white text-xl"></i></div>
     <h1 class="text-white font-extrabold text-md mt-2 mr-4 text-right">{{ last_task }}</h1>
 
     </div>
@@ -32,8 +32,28 @@
 <taskSect></taskSect>
 </div>
 
+<div v-show="settings == true">
+
+  <div id="avatar-head" class="m-auto flex justify-center mb-5 ">
+    <i class="fas fa-user-circle text-7xl text-blue-950 font-extrabold mt-5 "></i>
+  </div>
+
+<div id="selections" class="flex flex-col justify-center h-13 bg-white mt-10 w-full py-2 px-10">
+  <div class="flex justify-between h-13 bg-white w-full py-2">
+    <i class="fas fa-tasks text-2xl font-extrabold"></i>
+    <h3 class="text-lg font-serif">Edit</h3>
+  </div>
+
+  <router-link to="/" class="flex justify-between h-13 bg-white w-full py-2">
+    <i class="fas fa-sign-out text-2xl font-extrabold"></i>
+    <h3 class="text-lg font-serif">Logout</h3>
+  </router-link>
+</div>
+
+</div>
+
 <div id="footer" class="fixed bottom-0 left-0 right-0 bg-white m-3 h-16 p-4 flex justify-between">
-      <i class="fas fa-user-circle m-2 text-2xl"  :class="{ 'text-blue-950': !data_input, 'text-cyan-300': data_input }" @click="toogleDataInput"></i>
+      <i class="fas fa-user-circle m-2 text-2xl"  :class="{ 'text-blue-950': !data_input, 'text-cyan-700': data_input }" @click="toogleDataInput"></i>
       <i class="fas fa-cloud m-2 text-2xl" :class="{ 'text-blue-950': !collaborate, 'text-cyan-300': collaborate }" @click="toogleCollaborate" ></i>
       <i class="fas fa-cogs m-2 text-2xl" :class="{ 'text-blue-950': !settings, 'text-cyan-300': settings }" @click="toogleSettings"></i>
     </div>
