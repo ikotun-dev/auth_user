@@ -72,17 +72,21 @@ export default {
   methods: {
     async handleSubmit() {
       const requestOptions = {
+    
           user_name: this.username,
           password: this.password,
-      }
+      };
 
       await axios.post("http://127.0.0.1:8000/login/", requestOptions)
-          if (response.ok) {
+        .then((response) => {
+          if (response.status == 200) {
             // var access = null
             // var refresh = null
+            console.log(response.data)
 
-            response.json().then((data) => {
+         //   response.then((data) => {
               //extract the access and refresh tokens
+              const data = response.data 
               const access = data.access;
               const refresh = data.refresh;
               //const user_id = data.user_id
@@ -109,7 +113,7 @@ export default {
 
               console.log(access);
               console.log(refresh);
-            });
+      //      });
             console.log("It worked");
 
             this.$router.push("/dashboard");
