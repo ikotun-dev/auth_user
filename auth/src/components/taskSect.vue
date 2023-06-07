@@ -15,6 +15,8 @@
 
 <script>
 import _ from 'lodash';
+import axios from 'axios'
+
 
 export default {
   name: 'taskSect',
@@ -41,8 +43,11 @@ export default {
         }, 1000);
         return;
       }
-      const res = await fetch(`http://127.0.0.1:8000/get-tasks/${this.userId}/`);
-      const data = await res.json();
+
+      // implementing axios get 
+
+      const res = await axios.get(`http://127.0.0.1:8000/get-tasks/${this.userId}/`);
+      const data = await res;
       if (_.isEqual(data, this.previousTasks)) {
         // No new data available, wait for 1 second and check again
         setTimeout(() => {
