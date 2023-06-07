@@ -16,16 +16,11 @@ const router = createRouter({
     routes
 })
 
-
-
 // new Vue({
 //   el: '#app',
 //   store,
 //   render: h => h(App)
 // });
-
-
-
 
 import mitt from 'mitt';
 
