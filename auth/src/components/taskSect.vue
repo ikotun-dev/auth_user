@@ -17,7 +17,6 @@
 import _ from 'lodash';
 import axios from 'axios'
 
-
 export default {
   name: 'taskSect',
   data() {
@@ -63,12 +62,9 @@ export default {
       }
     },
 
-
-    
     async deleteTask(id) {
-      const res = await fetch(`http://127.0.0.1:8000/delete-task/${id}`, {
-        method: 'DELETE',
-      });
+      const res = await axios.delete(`http://127.0.0.1:8000/delete-task/${id}`);
+
       if (res.status === 200) {
         // Remove the task from the list
         this.previousTasks = this.previousTasks.filter(
